@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Insert title here</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="selected"><a href="/">Home</a></li>
+					<li><a href="addCliente">Acquista</a></li>
+					<li><a href="logInFunzionario">Area Riservata</a></li>
+					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
+					<li><a href="inserisciFoto"> Foto</a>
+					<li><a href="inserisciAlbum"> Album</a>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+				<ul>
+					<li th:each="foto : ${tutte}"><span width=300px> <img
+							th:src="${foto.indirizzo}" th:alt="${foto.descrizione}"></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

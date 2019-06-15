@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<body>
+	<div>
+		<h4>Lista Acquisti</h4>
+		<ul>
+			<li th:each="cliente : ${clienti}">
+				<!-- viene stampato un link; il link lo costruiamo noi con il nome dello studente
+				al posto di paolo (valore fittizio), compare ciò che ho in studente.nome specificato
+				in th:text --> 
+				<a 
+				th:href="@{'/cliente' + '/' + ${cliente.id}}"
+				th:text="${cliente.nome}">paolo</a>
+			</li>
+		</ul>
+	</div>
+</body>
+</html>

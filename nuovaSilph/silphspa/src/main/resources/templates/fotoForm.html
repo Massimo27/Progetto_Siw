@@ -1,0 +1,37 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="UTF-8">
+<title>Insert New Photo</title>
+</head>
+<body>
+	<div>
+		<h4>Inserisci i dati per la Foto</h4>
+	</div>
+	<form th:action="@{/foto}" method="POST" th:object="${foto}">
+		<table>
+			<tr>
+				<td>Autore:</td>
+				<td><input type="text" th:field="*{autore}" /></td>
+				<td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
+			</tr>
+			<tr>
+				<td>Indirizzo:</td>
+				<td><input type="url" th:field="*{indirizzo}" /></td>
+				<td th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></td>
+			</tr>
+			<tr>
+				<td>Descrizione:</td>
+				<td><input type="text" th:field="*{descrizione}" /></td>
+				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></td>
+			</tr>
+			<tr>
+				<td>
+					<button type="submit">Salva</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
