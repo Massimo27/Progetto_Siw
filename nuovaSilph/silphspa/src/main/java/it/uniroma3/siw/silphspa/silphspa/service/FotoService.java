@@ -20,7 +20,6 @@ public class FotoService {
 	public void inserisci (Foto foto) {
 		this.fotoRepository.save(foto);
 	}
-	
 	@Transactional
 	public List<Foto> tutte(){
 		return (List<Foto>) this.fotoRepository.findAll();

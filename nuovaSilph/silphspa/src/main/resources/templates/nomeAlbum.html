@@ -33,33 +33,13 @@
 				<div>
 					<h4>Inserisci i dati per la Foto</h4>
 				</div>
-				<form th:action="@{/album}" method="POST" th:object="${foto}">
+				<form th:action="@{/inserisciAlbum}" method="POST" th:object="${foto}">
 					<table>
-						<tr>
-							<td>Autore:</td>
-							<td><input type="text" th:field="*{autore}" /></td>
-							<td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
-						</tr>
-						<tr>
-							<td>Indirizzo:</td>
-							<td><input type="url" th:field="*{indirizzo}" /></td>
-							<td th:if="${#fields.hasErrors('indirizzo')}"
-								th:errors="*{indirizzo}"></td>
-						</tr>
-						<tr>
-							<td>Descrizione:</td>
-							<td><input type="text" th:field="*{descrizione}" /></td>
-							<td th:if="${#fields.hasErrors('descrizione')}"
-								th:errors="*{descrizione}"></td>
-						</tr>
 						<tr>
 							<td>Album:</td>
 							<td><input type="text" th:field="*{album}" /></td>
 						</tr>
-						<tr>
-							<td><button type="submit" name="addFoto">Continua</button></td>
-							<td><input type="submit" value="Finisci e Salva" /></td> 
-						</tr>
+						<tr><td><button type="submit">Inserisci Foto</button></td></tr>
 					</table>
 				</form>
 			</div>

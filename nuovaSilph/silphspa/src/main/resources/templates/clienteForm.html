@@ -16,44 +16,48 @@
 			</div>
 			<div id="menubar">
 				<ul id="menu">
-					<li class="selected"><a href="/">Home</a></li>
-					<li><a href="addCliente">Acquista</a></li>
+					<li><a href="/">Home</a></li>
+					<li class="selected"><a href="addCliente">Acquista</a></li>
 					<li><a href="logInFunzionario">Area Riservata</a></li>
 					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
 					<li><a href="inserisciFoto"> Foto</a>
-					<li><a href="inserisciAlbum"> Album</a>
+					<li><a href="inserisciNomeAlbum"> Album</a>
 				</ul>
 			</div>
 		</div>
 		<div id="site_content">
 			<div id="content">
-	<div>
-		<h4>Inserisci i dati di un cliente</h4>
+				<div>
+					<h4>Inserisci i dati di un cliente</h4>
+				</div>
+				<!-- th e' il tag di thymeleaf  -->
+				<form th:action="@{/cliente}" method="POST" th:object="${cliente}">
+					<table>
+						<tr>
+							<td>Nome:</td>
+							<td><input type="text" th:field="*{nome}" /></td>
+							<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+						</tr>
+						<tr>
+							<td>Cognome:</td>
+							<td><input type="text" th:field="*{cognome}" /></td>
+							<td th:if="${#fields.hasErrors('cognome')}"
+								th:errors="*{cognome}"></td>
+						</tr>
+						<tr>
+							<td>Email:</td>
+							<td><input type="text" th:field="*{email}" /></td>
+							<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+						</tr>
+						<tr>
+							<td>
+								<button type="submit">Invio</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
 	</div>
-	<!-- th e' il tag di thymeleaf  -->
-	<form th:action="@{/cliente}" method="POST" th:object="${cliente}">
-		<table>
-			<tr>
-				<td>Nome:</td>
-				<td><input type="text" th:field="*{nome}" /></td>
-				<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
-			</tr>
-			<tr>
-				<td>Cognome:</td>
-				<td><input type="text" th:field="*{cognome}" /></td>
-				<td th:if="${#fields.hasErrors('cognome')}" th:errors="*{cognome}"></td>
-			</tr>
-			<tr>
-				<td>Email:</td>
-				<td><input type="text" th:field="*{email}" /></td>
-				<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
-			</tr>
-			<tr>
-				<td>
-					<button type="submit">Invio</button>
-				</td>
-			</tr>
-		</table>
-	</form>
 </body>
 </html>

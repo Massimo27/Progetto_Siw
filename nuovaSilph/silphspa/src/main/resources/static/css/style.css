@@ -75,18 +75,15 @@ ol li
   margin-right: auto;}
 
 #main
-{ width: 910px;
-  background: url(content.png) repeat-y;}
+{ width: 910px;}
 
 #header
-{ width: 890px;
-  background: url(back.png) repeat-x;}
+{ width: 890px;}
 
 #logo
 { width: 890px;
   position: relative;
-  height: 200px;
-  background: url(logo.jpg) no-repeat;}
+  height: 200px;}
 
 #logo #logo_text 
 { position: absolute; 
@@ -162,28 +159,6 @@ ul#menu li a:hover
   overflow: hidden;
   background: #F8F8F8;} 
 
-.sidebar
-{ float: right;
-  width: 198px;
-  padding: 20px 25px 15px 15px;}
-
-.sidebar ul
-{ width: 178px; 
-  padding: 4px 0 0 0; 
-  margin: 4px 0 30px 0;}
-
-.sidebar li
-{ list-style: none; 
-  padding: 0 0 7px 0; }
-
-.sidebar li a, .sidebar li a:hover
-{ padding: 0 0 0 40px;
-  display: block;
-  background: transparent url(link.png) no-repeat left center;} 
-
-.sidebar li a.selected
-{ color: #444;
-  text-decoration: none;} 
 
 #content
 { text-align: left;
@@ -196,7 +171,6 @@ ul#menu li a:hover
 
 #content ul li
 { list-style-type: none;
-  background: url(bullet.png) no-repeat;
   margin: 0 0 6px 0; 
   padding: 0 0 4px 25px;
   line-height: 1.5em;}

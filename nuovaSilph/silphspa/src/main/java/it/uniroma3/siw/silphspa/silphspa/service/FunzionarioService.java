@@ -27,8 +27,8 @@ public class FunzionarioService {
 	public Funzionario funzionarioPerId(Long id) {
 		return this.funzionarioRepository.findById(id).get();
 	}
-	public Funzionario funzionarioPerNickname(String user) {
-		return (Funzionario) funzionarioRepository.findByuserName(user);
+	public Funzionario funzionarioPerUser_name(String nickname) {
+		return (Funzionario) funzionarioRepository.findByNickname(nickname);
 	}
 }
 

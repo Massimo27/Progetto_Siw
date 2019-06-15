@@ -23,14 +23,14 @@
 					<li><a href="logInFunzionario">Area Riservata</a></li>
 					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
 					<li><a href="inserisciFoto"> Foto</a>
-					<li><a href="inserisciAlbum"> Album</a>
+					<li><a href="inserisciNomeAlbum"> Album</a>
 				</ul>
 			</div>
 		</div>
 		<div id="site_content">
 			<div id="content">
 				<ul>
-					<li th:each="foto : ${tutte}"><span width=300px> <img
+					<li th:each="foto : ${tutte}"><span> <img
 							th:src="${foto.indirizzo}" th:alt="${foto.descrizione}"></span></li>
 				</ul>
 			</div>

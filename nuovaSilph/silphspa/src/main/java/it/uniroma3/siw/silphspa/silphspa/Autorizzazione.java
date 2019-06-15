@@ -1,4 +1,5 @@
-package it.uniroma3.siw.silphspa.silphspa;
+
+/*package it.uniroma3.siw.silphspa.silphspa;
 
 import javax.sql.DataSource;
 
@@ -19,12 +20,11 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 public class Autorizzazione extends WebSecurityConfigurerAdapter{
 	@Autowired
 	private Environment environment;
-	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		http
         .authorizeRequests()
-            .antMatchers("/","classpath:/static/css/","/css/**").permitAll()
+            .antMatchers("/","classpath:/static/css/","/css/**","/foto","/Foto","/fotoForm","/inserisciFoto").permitAll()
             .antMatchers("/admin").hasAnyAuthority("ADMIN")
             .anyRequest().authenticated()
             .and()
@@ -40,15 +40,18 @@ public class Autorizzazione extends WebSecurityConfigurerAdapter{
 		//super.configure(http);
 	}
 	
+	
 	@Autowired
 	public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
-		auth.jdbcAuthentication().dataSource(this.buildDataSource())
-		.authoritiesByUsernameQuery("SELECT funzionario.user_name,role FROM funzionario WHERE user_name=?")
-		.usersByUsernameQuery("SELECT funzionario.user_name,funzionario.password,1 as enabled FROM funzionario where user_name=?");
+		auth.jdbcAuthentication().dataSource(this.buildDataSource()) //Accede al DB
+		.authoritiesByUsernameQuery("SELECT nickname,role FROM funzionario WHERE nickname=?")
+		.usersByUsernameQuery("SELECT nickname,password,1 as enabled FROM funzionario WHERE nickname=?");
 
 	}
 	
-
+	/* Imposta il DataSource con le credenziali di accesso al Database, in questo caso
+	 * di postgress
+	 
 	@Bean
 	DataSource buildDataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -61,5 +64,5 @@ public class Autorizzazione extends WebSecurityConfigurerAdapter{
 
 	@Bean
 	PasswordEncoder encoder() {return new BCryptPasswordEncoder();}
-
 }
+*/

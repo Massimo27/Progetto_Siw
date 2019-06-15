@@ -12,49 +12,34 @@ public class Funzionario {
 	private Long id;
 	private String nome; 
 	private String cognome; 
-	private String userName;
+	private String nickname;
 	private String password;
 	private String role;
 	
-	public String getUserName() {
-		return userName;
-	}
-
-
-
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-
-
-
-	public String getRole() {
-		return role;
-	}
-
-
-
-	public void setRole(String role) {
-		this.role = role;
-	}
-	
-	
-	
 	public Funzionario() {};
-	
-	
 	
 	public Funzionario(String nome, String cognome, String nickname, String password,String role) {
 		super();
 		this.nome = nome;
 		this.cognome = cognome;
-		this.userName = nickname;
+		this.nickname = nickname;
 		this.password = password;
 		this.role=role;
 	}
 
-
-
+		
+	public String getNickname() {
+		return nickname;
+	}
+	public void setNickname(String nickname) {
+		this.nickname = nickname;
+	}
+	public String getRole() {
+		return role;
+	}
+	public void setRole(String role) {
+		this.role = role;
+	}
 	public Long getId() {
 		return id;
 	}

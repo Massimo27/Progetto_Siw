@@ -58,7 +58,7 @@ position: relative;
 z-index: 1;
 float: right;}
 ul#menu {float: right; margin:0;}
-ul#menu li {float: lef; margin: 5px 0 0 0; padding 0 0 0 6px; list-style: none;}
+ul#menu li {float: left; margin: 5px 0 0 0; padding 0 0 0 6px; list-style: none;}
 ul {margin: 2px 0 22px 17px;}
 
 #site_content 

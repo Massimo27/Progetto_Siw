@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import it.uniroma3.siw.silphspa.silphspa.model.Foto;
 import it.uniroma3.siw.silphspa.silphspa.model.Funzionario;
 import it.uniroma3.siw.silphspa.silphspa.service.ClienteService;
@@ -36,6 +35,7 @@ public class FunzionarioController {
 	@Autowired
 	private FunzionarioValidator funzionarioValidator;
 	
+	/*
 	@RequestMapping(value="/funzionario", method = RequestMethod.POST)
 	public String accessoFunzionario(@Valid @ModelAttribute("funzionario") Funzionario funzionario, Model model, BindingResult bindingResult) {
 		this.funzionarioValidator.validate(funzionario, bindingResult);
@@ -54,8 +54,9 @@ public class FunzionarioController {
 		//bisogna prende un utente gia registrato e non crearne uno nuovo...
 		model.addAttribute("funzionario", new Funzionario());
 		return "logInFunzionario.html";
-	}
+	}*/
 	
+	//LISTA CLIENTI CON LINK PER OGNI CLIENTE
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
 	public String getCliente(@PathVariable("id") Long id, Model model) {
 		if(id!=null) {
@@ -66,7 +67,7 @@ public class FunzionarioController {
 			model.addAttribute("clienti", this.clienteSevice.tutti());
 			return "clienti.html";
 		}
-	}
+	}//LISTA CLIENTI NELLA PAGINA FUNZIONARIO
 	@RequestMapping("/listaClienti")
 	public String listaClienti(Model model) {
 		//bisogna prende un utente gia registrato e non crearne uno nuovo...
@@ -74,48 +75,45 @@ public class FunzionarioController {
 		return "clienti.html";
 	}
 	
+	//SALVA LA FOTO NEL DATABASE CON I DATI DEL FORM
 	@RequestMapping("/foto")
 	public String salvaFoto(@Valid @ModelAttribute ("foto") Foto foto,Model model) {
 		this.fotoService.inserisci(foto);
 		model.addAttribute("foto",foto);
 		return "Foto.html";
-	}
+	}//PORTA ALLA PAGINA DI INSERIMENTO FOTO
 	@RequestMapping("/inserisciFoto")
 	public String inserisciFoto(Model model) {
 		model.addAttribute("foto",new Foto());
 		return "fotoForm.html";
 	}
-	
-
+	//SALVA L'ALBUM CON TUTTE LE FOTO ALL'INTERNO NEL DATABASE
 	@RequestMapping("/album")
-	public String visualizza(@ModelAttribute("album") ArrayList<Foto> album) {
-		for (Foto foto : album) {
-			fotoService.inserisci(foto);
-		}
-		for(Foto f : album) {
-			System.out.println(f.getId());
-			}
+	public String visualizza( @ModelAttribute("foto") Foto photo, Model model) {
+			fotoService.inserisci(photo);
+			model.addAttribute("tutte",fotoService.tutte()); 	 	
 		return "home.html";
 	}
-	
-	@RequestMapping(value="/inserisciAlbum",params= {"addFoto"})
-	public String aggiungiFoto(Model model,@ModelAttribute("album") List<Foto> album ) {
-		Foto foto = new Foto();
-		album.add(foto);
-		model.addAttribute("album",album);
+	//UNA VOLTA PREMUTO IL TASTO AGGIUNGE UNA FOTO DA COMPILARE NELL'ALBUM
+	@RequestMapping(value="/album",params= {"addFoto"})
+	public String aggiungiFoto(Model model, @ModelAttribute("foto") Foto foto ) {
+		this.fotoService.inserisci(foto);
+		model.addAttribute("foto", foto);
+		return "albumForm.html";
+		
+	}
+	@RequestMapping("/inserisciAlbum")
+	public String insersciAlbum(Model model,@ModelAttribute("foto") Foto foto) {
+		Foto photo = new Foto();
+		photo.setAlbum(foto.getAlbum());
+		model.addAttribute("foto",photo);
 		return "albumForm.html";
 	}
 	
-	@RequestMapping("/inserisciAlbum")
-	public String inserisciAlbum(Model model) {
-		List<Foto> album = new ArrayList<Foto>();
-		Foto foto = new Foto();
-		foto.setId((long ) 1);
-		album.add(foto);
-		for(Foto f : album) {
-		System.out.println(f.getId());
-		}
-		model.addAttribute("album",album);
-		return "albumForm.html";
+	//PORTA ALLA PAGINA DI INSERIMENTO NOME ALBUM
+	@RequestMapping("/inserisciNomeAlbum")
+	public String inserisciNomeAlbum(Model model) {
+		model.addAttribute("foto",new Foto());
+		return "nomeAlbum.html";
 	}
 }
