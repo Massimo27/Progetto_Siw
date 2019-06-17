@@ -39,4 +39,12 @@ public class FotoService {
 	public List<Foto> fotoPerAlbum(String album){
 		return this.fotoRepository.findByAlbum(album);
 	}
+	@Transactional
+	public Foto fotoPerId(Long id) {
+		return this.fotoRepository.findById(id).get();
+	}
+	@Transactional 
+	public List<Foto> fotoAggiunte() {
+		return this.fotoRepository.findByAggiunta(true);
+	}
 }

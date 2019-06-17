@@ -16,6 +16,7 @@ public class Foto {
 	private URL indirizzo;
 	private String descrizione;
 	private String album;
+	private Boolean aggiunta;
 	
 	public Long getId() {
 		return id;
@@ -46,5 +47,11 @@ public class Foto {
 	}
 	public void setAlbum(String album) {
 		this.album = album;
+	}
+	public Boolean getAggiunta() {
+		return aggiunta;
+	}
+	public void setAggiunta(Boolean aggiunta) {
+		this.aggiunta = aggiunta;
 	}	
 }

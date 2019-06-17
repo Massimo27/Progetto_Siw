@@ -50,11 +50,22 @@
 							<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
 						</tr>
 						<tr>
+							<td>Carrello:</td>
+							<td><input type="text" th:field="*{carrello}" /></td>
+						</tr>
+						<tr>
 							<td>
 								<button type="submit">Invio</button>
 							</td>
 						</tr>
 					</table>
+					Foto nel Carrelo 
+					<ul>
+						<li th:each="foto :${aggiunte}">
+						<a th:href="@{'/remove'+'/foto'+'/'+${foto.id}}">
+						<img th:src="${foto.indirizzo}" th:alt="${foto.descrizione}"></a>
+						</li>
+					</ul>
 				</form>
 			</div>
 		</div>

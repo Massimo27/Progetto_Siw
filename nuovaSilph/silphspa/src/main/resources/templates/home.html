@@ -20,18 +20,22 @@
 				<ul id="menu">
 					<li class="selected"><a href="/">Home</a></li>
 					<li><a href="addCliente">Acquista</a></li>
-					<li><a href="logInFunzionario">Area Riservata</a></li>
+					<li><a href="listaClienti">Lista clienti</a></li>
 					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
-					<li><a href="inserisciFoto"> Foto</a>
-					<li><a href="inserisciNomeAlbum"> Album</a>
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li><a href="inserisciNomeAlbum"> Album</a></li>
+					<li><a href="cercaFoto">Cerca</a></li>
 				</ul>
 			</div>
 		</div>
 		<div id="site_content">
+				<a href="addCliente"><button>Acquista Selezionate</button></a>
 			<div id="content">
 				<ul>
-					<li th:each="foto : ${tutte}"><span> <img
-							th:src="${foto.indirizzo}" th:alt="${foto.descrizione}"></span></li>
+					<li th:each="foto : ${tutte}">
+						<a	th:href="@{'/foto' + '/' +${foto.id}}"><img th:src="${foto.indirizzo}" th:alt="${foto.descrizione}">
+							</a>
+						</li>
 				</ul>
 			</div>
 		</div>

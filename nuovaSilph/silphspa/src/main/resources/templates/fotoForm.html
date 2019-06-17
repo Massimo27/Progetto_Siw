@@ -4,34 +4,64 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert New Photo</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
 </head>
 <body>
-	<div>
-		<h4>Inserisci i dati per la Foto</h4>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="selected"><a href="/">Home</a></li>
+					<li><a href="addCliente">Acquista</a></li>
+					<li><a href="logInFunzionario">Area Riservata</a></li>
+					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li><a href="inserisciAlbum"> Album</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+
+				<div>
+					<h4>Inserisci i dati per la Foto</h4>
+				</div>
+				<form th:action="@{/foto}" method="POST" th:object="${foto}">
+					<table>
+						<tr>
+							<td>Autore:</td>
+							<td><input type="text" th:field="*{autore}" /></td>
+							<td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
+						</tr>
+						<tr>
+							<td>Indirizzo:</td>
+							<td><input type="url" th:field="*{indirizzo}" /></td>
+							<td th:if="${#fields.hasErrors('indirizzo')}"
+								th:errors="*{indirizzo}"></td>
+						</tr>
+						<tr>
+							<td>Descrizione:</td>
+							<td><input type="text" th:field="*{descrizione}" /></td>
+							<td th:if="${#fields.hasErrors('descrizione')}"
+								th:errors="*{descrizione}"></td>
+						</tr>
+						<tr>
+							<td>
+								<button type="submit">Salva</button>
+							</td>
+						</tr>
+					</table>
+				</form>
+			</div>
+		</div>
 	</div>
-	<form th:action="@{/foto}" method="POST" th:object="${foto}">
-		<table>
-			<tr>
-				<td>Autore:</td>
-				<td><input type="text" th:field="*{autore}" /></td>
-				<td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
-			</tr>
-			<tr>
-				<td>Indirizzo:</td>
-				<td><input type="url" th:field="*{indirizzo}" /></td>
-				<td th:if="${#fields.hasErrors('indirizzo')}" th:errors="*{indirizzo}"></td>
-			</tr>
-			<tr>
-				<td>Descrizione:</td>
-				<td><input type="text" th:field="*{descrizione}" /></td>
-				<td th:if="${#fields.hasErrors('descrizione')}" th:errors="*{descrizione}"></td>
-			</tr>
-			<tr>
-				<td>
-					<button type="submit">Salva</button>
-				</td>
-			</tr>
-		</table>
-	</form>
 </body>
 </html>

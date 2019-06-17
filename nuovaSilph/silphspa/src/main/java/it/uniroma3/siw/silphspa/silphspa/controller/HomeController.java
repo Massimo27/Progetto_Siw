@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import it.uniroma3.siw.silphspa.silphspa.model.Carrello;
+import it.uniroma3.siw.silphspa.silphspa.model.Foto;
 import it.uniroma3.siw.silphspa.silphspa.service.FotoService;
 
 @Controller
@@ -15,7 +17,7 @@ public class HomeController  {
 	
 	@RequestMapping("/")
 	public String mostraTutte (Model model) {
-		model.addAttribute("tutte",this.fotoService.tutte());
+		model.addAttribute("tutte", this.fotoService.tutte());
 		return "home.html";
 	}
 	

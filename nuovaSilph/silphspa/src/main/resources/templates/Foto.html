@@ -1,15 +1,42 @@
 <!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns="http://www.w3.org/1999/html">
+	xmlns="http://www.w3.org/1999/html">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
 </head>
 <body>
-	<ul>
-		<li><span th:text="${foto.autore}"></span></li>
-		<li><img th:src="${foto.indirizzo}"></span>
-		<li><span th:text="${foto.descrizione}"></span></li>
-	</ul>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="selected"><a href="/">Home</a></li>
+					<li><a href="addCliente">Acquista</a></li>
+					<li><a href="logInFunzionario">Area Riservata</a></li>
+					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li><a href="inserisciAlbum"> Album</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+				<ul>
+					<li><span th:text="${foto.autore}"></span></li>
+					<li><img th:src="${foto.indirizzo}"></li>
+					<li><span th:text="${foto.descrizione}"></span></li>
+				</ul>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

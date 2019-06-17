@@ -2,10 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org"
 	xmlns="http://www.w3.org/1999/html">
 <head>
-<meta charset="UTF-8">
-<title>Home Funzionario</title>
 <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
-
 </head>
 <body>
 	<div id="main">
@@ -19,25 +16,36 @@
 			</div>
 			<div id="menubar">
 				<ul id="menu">
-					<li class="selected"><a href="/">Home</a></li>
-					<li><a href="addCliente">Acquista</a></li>
+					<li><a href="/">Home</a></li>
+					<li class="selected"><a href="addCliente">Acquista</a></li>
 					<li><a href="logInFunzionario">Area Riservata</a></li>
 					<!-- RIMUOVERE QUESTO/I LINK DOPO LO SVILUPPO COMPLETO -->
 					<li><a href="inserisciFoto"> Foto</a></li>
-					<li><a href="inserisciAlbum"> Album</a></li>
+					<li><a href="inserisciNomeAlbum"> Album</a></li>
 				</ul>
 			</div>
 		</div>
 		<div id="site_content">
 			<div id="content">
-
-
-				<h1>
-					Benvenuto <span th:text="${funzionario.nome}"></span>
-				</h1>
-
-				<a href="listaClienti">Richieste Clienti</a> <a href="inserisciFoto">
-					Inserisci Nuove Foto o Album</a>
+				<h4>Ricerca</h4>
+				<form th:action="@{/ricercaFotografo}" method="get"
+					th:object="${ricerca}">
+					<table>
+						<tr>
+							<td>Fotografo:</td>
+							<td><input type="text" th:field="*{autore}" /></td>
+						</tr>
+					</table>
+				</form>
+				<form th:action="@{/ricercaAlbum}" method="get"
+					th:object="${ricerca}">
+					<table>
+						<tr>
+							<td>Album:</td>
+							<td><input type="text" th:field="*{album}" /></td>
+						</tr>
+					</table>
+				</form>
 			</div>
 		</div>
 	</div>
