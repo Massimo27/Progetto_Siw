@@ -36,6 +36,7 @@ public class ClienteController {
 			this.clienteService.inserisci(cliente);
 			for(Foto foto : this.fotoService.fotoAggiunte()) {
 				foto.setAggiunta(null);
+				fotoService.inserisci(foto);
 			}
 			model.addAttribute("clienti", this.clienteService.tutti());
 			return "richiestaEffettuata.html";

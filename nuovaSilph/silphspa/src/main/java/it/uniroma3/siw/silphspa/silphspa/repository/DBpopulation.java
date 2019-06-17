@@ -30,6 +30,7 @@ public class DBpopulation implements ApplicationRunner{
 		funzionarioRepository.deleteAll();
 		for(Foto foto : this.fotoService.fotoAggiunte()) {
 			foto.setAggiunta(null);
+			fotoService.inserisci(foto);
 		}
 		
 	}
