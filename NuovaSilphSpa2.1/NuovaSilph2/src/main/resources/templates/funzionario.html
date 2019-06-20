@@ -1,0 +1,49 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="UTF-8">
+<title>Home Funzionario</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li><a href="/">Home</a></li>
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li><a href="inserisciAlbum"> Album</a></li>
+					<li class="selected" ><a href="funzionario"> listaClienti</a>
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+
+
+				<h1>
+					Benvenuto <span th:text="${funzionario.nome}"></span>
+				</h1>
+					<h3>Lista Richiesta Clienti</h3>
+					<ul>
+					<li th:each="cliente : ${clienti}">
+							<!-- viene stampato un link; il link lo costruiamo noi con il nome dello studente
+				al posto di paolo (valore fittizio), compare ciò che ho in studente.nome specificato
+				in th:text --> <a th:href="@{'/cliente' + '/' + ${cliente.id}}"
+							th:text="${cliente.nome}">paolo</a></li>
+							</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

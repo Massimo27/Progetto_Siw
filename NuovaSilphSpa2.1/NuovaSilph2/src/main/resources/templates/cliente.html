@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head><link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li><a href="/">Home</a></li>
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li><a href="inserisciNomeAlbum"> Album</a></li>
+					<li class="selected" ><a href="funzionario"> listaClienti</a>
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+
+				<div>
+					<h4>Cliente</h4>
+					<div>
+						Nome: <span th:text="${cliente.nome}">Gabriele</span>
+					</div>
+					<div>
+						Cognome: <span th:text="${cliente.cognome}">Alecci</span>
+					</div>
+					<div>
+						Email: <span th:text="${cliente.email}">gab.alecci@gmail.com</span>
+					</div>
+					<div>
+						Carrello : <span th:text="${cliente.carrello}">indirizzi
+							Foto</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

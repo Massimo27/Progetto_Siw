@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Silph Home</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li class="selected"><a href="/">Home</a></li>
+					<li><a href="addCliente">Carrello</a></li>
+					<li><a href="funzionario">Area Riservata</a></li>
+					<li><a href="cercaFoto">Cerca</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+			<h3>Clicca sulle foto desiderate per aggiungerle al carrello</h3>
+				<ul>
+					<li th:each="foto : ${tutte}">
+						<a	th:href="@{'/foto' + '/' +${foto.id}}"><img th:src="${foto.indirizzo}" th:alt="${foto.descrizione}">
+							</a>
+						</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"
+	title="style" />
+<title>Inserimento</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li ><a href="/">Home</a></li>
+					<li><a href="inserisciFoto"> Foto</a></li>
+					<li class="selected"><a href="inserisciNomeAlbum"> Album</a></li>
+					<li ><a href="funzionario"> listaClienti</a>
+					<li><a href="logout">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+				<div>
+					<h4>Inserisci i dati per la Foto</h4>
+				</div>
+				<form th:action="@{/inserisciAlbum}" method="POST" th:object="${foto}">
+					<table>
+						<tr>
+							<td>Album:</td>
+							<td><input type="text" th:field="*{album}" /></td>
+						</tr>
+						<tr><td><button type="submit">Inserisci Foto</button></td></tr>
+					</table>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

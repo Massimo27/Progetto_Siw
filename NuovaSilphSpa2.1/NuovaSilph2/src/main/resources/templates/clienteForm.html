@@ -1,0 +1,73 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Carrello</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li><a href="/">Home</a></li>
+					<li class="selected"><a href="addCliente">Carrello</a></li>
+					<li><a href="cercaFoto">Cerca</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+				<div>
+					<h3>Inserisci i tuoi dati </h3>
+					<h4>Clicca sulle immagini per rimuoverle dal carrello</h4>
+				</div>
+				<!-- th e' il tag di thymeleaf  -->
+				<form th:action="@{/cliente}" method="POST" th:object="${cliente}">
+					<table>
+						<tr>
+							<td>Nome:</td>
+							<td><input type="text" th:field="*{nome}" /></td>
+							<td th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></td>
+						</tr>
+						<tr>
+							<td>Cognome:</td>
+							<td><input type="text" th:field="*{cognome}" /></td>
+							<td th:if="${#fields.hasErrors('cognome')}"
+								th:errors="*{cognome}"></td>
+						</tr>
+						<tr>
+							<td>Email:</td>
+							<td><input type="text" th:field="*{email}" /></td>
+							<td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+						</tr>
+						<tr>
+							<td>Carrello:</td>
+							<td><input type="text" th:field="*{carrello}" /></td>
+						</tr>
+						<tr>
+							<td>
+								<button type="submit">Invio</button>
+							</td>
+						</tr>
+					</table>
+					Foto nel Carrelo 
+					<ul>
+						<li th:each="foto :${aggiunte}">
+						<a th:href="@{'/remove'+'/foto'+'/'+${foto.id}}">
+						<img th:src="${foto.indirizzo}" th:alt="${foto.descrizione}"></a>
+						</li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

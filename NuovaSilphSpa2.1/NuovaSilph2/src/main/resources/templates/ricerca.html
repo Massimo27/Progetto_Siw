@@ -1,0 +1,54 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring4-4.dtd">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns="http://www.w3.org/1999/html">
+<head>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+<title>Cerca</title>
+</head>
+<body>
+	<div id="main">
+		<div id="header">
+			<div id="logo">
+				<div id="logo_text">
+					<h1>
+						<a href="/">Silph<span class="logo_colour">spa</span></a>
+					</h1>
+				</div>
+			</div>
+			<div id="menubar">
+				<ul id="menu">
+					<li><a href="/">Home</a></li>
+					<li><a href="addCliente">Carrello</a></li>
+				    <li class="selected"><a href="cercaFoto">Cerca</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="site_content">
+			<div id="content">
+				<h4>Ricerca</h4>
+				<form th:action="@{/ricercaFotografo}" method="POST"
+					th:object="${ricerca}">
+					<table>
+						<tr>
+							<td>Fotografo:</td>
+							<td><input type="text" th:field="*{autore}" /></td>
+							<td th:if="${#fields.hasErrors('autore')}" th:errors="*{autore}"></td>
+						</tr>
+					</table>
+				</form>
+				<form th:action="@{/ricercaAlbum}" method="POST"
+					th:object="${ricerca}">
+					<table>
+						<tr>
+							<td>Album:</td>
+							<td><input type="text" th:field="*{album}" /></td>
+							<td th:if="${#fields.hasErrors('album')}" th:errors="*{album}"></td>
+						</tr>
+					</table>
+				</form>
+				</ul>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
