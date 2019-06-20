@@ -16,7 +16,6 @@ import it.uniroma3.siw.silphspa.silphspa.service.ClienteService;
 import it.uniroma3.siw.silphspa.silphspa.service.FotoService;
 import it.uniroma3.siw.silphspa.silphspa.service.FotoValidator;
 import it.uniroma3.siw.silphspa.silphspa.service.FunzionarioService;
-import it.uniroma3.siw.silphspa.silphspa.service.FunzionarioValidator;
 
 @Controller
 public class FunzionarioController {
@@ -32,8 +31,6 @@ public class FunzionarioController {
 	@Autowired
 	private FotoValidator fotoValidator;
 	
-	@Autowired
-	private FunzionarioValidator funzionarioValidator;
 	
 
 	@RequestMapping("/cliente/funzionario")
@@ -51,24 +48,11 @@ public class FunzionarioController {
 	
 	@RequestMapping(value= {"/funzionario"}, method = RequestMethod.GET)
 	public String accessoFunzionario(@Valid @ModelAttribute("funzionario") Funzionario funzionario, Model model, BindingResult bindingResult) {
-		/*this.funzionarioValidator.validate(funzionario, bindingResult);
-		if(!bindingResult.hasErrors()) {
-			if(this.funzionarioService.funzionarioPerUser_name(funzionario.getNickname()).getPassword().equals(funzionario.getPassword()))*/
-				model.addAttribute("funzionario", funzionario);
+			model.addAttribute("funzionario", funzionario);
 				model.addAttribute("clienti", this.clienteSevice.tutti());
 			return "funzionario.html";
 		}
-		/*else
-			return "logInFunzionario.html";
-	}*/
 	
-	//metodo che permette di rilanciare l'applicazione
-	@RequestMapping("/logInFunzionario")
-	public String logInFunzionario(Model model) {
-		//bisogna prende un utente gia registrato e non crearne uno nuovo...
-		model.addAttribute("funzionario", new Funzionario());
-		return "logInFunzionario.html";
-	}
 	
 	//LISTA CLIENTI CON LINK PER OGNI CLIENTE
 	@RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
@@ -79,15 +63,8 @@ public class FunzionarioController {
 		}
 		else {
 			model.addAttribute("clienti", this.clienteSevice.tutti());
-			return "clienti.html";
+			return "clienti.html";}
 		}
-	}//LISTA CLIENTI NELLA PAGINA FUNZIONARIO
-	@RequestMapping("/listaClienti")
-	public String listaClienti(Model model) {
-		//bisogna prende un utente gia registrato e non crearne uno nuovo...
-		model.addAttribute("clienti", clienteSevice.tutti());
-		return "clienti.html";
-	}
 	
 	//SALVA LA FOTO NEL DATABASE CON I DATI DEL FORM
 	@RequestMapping("/foto")
